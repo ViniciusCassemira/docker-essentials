@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(245, 214, 37);
+    text-align: center;
+    color: white;
+}
+
+a{
+    color: white
+}

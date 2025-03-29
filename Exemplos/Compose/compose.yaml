@@ -1,0 +1,41 @@
+# Declarando volumes
+volumes:
+  db_blog: #Volume para o MySQL
+  wordpress_vol: #Volume para o WordPress
+
+# Declarando networks
+networks:
+  wordpress_net: #Nome da rede
+    driver: bridge # Tipo da rede
+
+# Criando containers
+services:
+  mysql: #Nome do container
+    image: mysql:8.3.0 #Imagem base
+    ports:
+      - 3306:3306
+    environment: #Variáveis que o container vai utilizar (usadas a parti )
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes: #Vinculando o volume ao repositório do container para persistência de dados
+      - db_blog:/var/lib/mysql
+    networks: #Atrelando o container a uma rede
+      - wordpress_net
+
+  wordpress: #Nome do container
+    image: wordpress:6.4.3 #Imagem base
+    ports: 
+      - 8080:80
+    depends_on: #Declara que esse container depende da existência do container 'mysql' para ser criado
+      - mysql 
+    environment: #Variáveis que o container vai utilizar
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD} 
+      WORDPRESS_DB_NAME: ${DB_DATABASE}
+    volumes: #Vinculando o container para persistência de dados em um outro volume
+      - wordpress_vol:/var/www/html
+    networks: #Atrelando o container à mesma rede que o 1º container
+      - wordpress_net
