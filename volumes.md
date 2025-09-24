@@ -12,6 +12,6 @@ Os principais tipos de volumes são:
 Esses possuem um nome definido pelo usuário, tornando-os fáceis de identificar, gerenciar e compartilhar entre containers. O Docker cria e gerencia volumes nomeados e armazena seus dados em um local específico do sistema do host. Geralmente, esse local fica no diretório de instalação do Docker, com um ID correspondente ao nome do volume. Oferecem maior controle e flexibilidade, pois é prático fazer referência a eles usando seus identificadores legíveis por humanos.
 
 # Volumes Anônimos  
-Já os volumes anônimos não possuem um nome definido pelo usuário. O Docker os cria automaticamente quando você cria um container e associa um ID exclusivo a esse volume. É mais difícil gerenciar esse tipo de volume devido à falta de um identificador legível por humanos. Seu uso é mais comum para armazenamento temporário, podendo também ser criado caso você não especifique um volume ao criar um container.
+Já os volumes anônimos não possuem um nome definido pelo usuário. O Docker os cria automaticamente quando você cria um container e associa um ID exclusivo a esse volume. É mais difícil gerenciar esse tipo de volume devido à falta de um identificador legível por humanos. Seu uso é mais comum para armazenamento temporário, quando você apaga o coantainer esse volume continua existindo, mas como possui um nome aleatório é mais trabalhoso usá-lo novamente.
 
-Conheça os comandos para manipular e crias volumes [clicando aqui](./commands.md).
+Conheça os comandos para manipular e criar volumes [clicando aqui](./commands.md).

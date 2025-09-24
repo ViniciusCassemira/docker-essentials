@@ -1,6 +1,6 @@
 # Networks 🌐🔗
 No Docker, as redes(networks) são utilizadas para conectar os containers com seu host e com outros containers no mesmo host.
-**Obs:**Quando utilizamos kubernetes, esse conceito de network não se aplica, lá utilizamos o conceito de _services_.
+**Obs:** Quando utilizamos kubernetes, esse conceito de network não se aplica, lá utilizamos o conceito de _services_.
 
 Por padrão, quando você cria um container no Docker sem especificar uma rede personalizada, **ele é atribuído automaticamente à rede bridge**, que é a rede padrão do Docker. A partir dessa configuração, os containers podem se comunicar entre si através de IPs, mas **não conseguem se resolver pelo nome do container**, que é algo que normalmente acontece quando você usa redes personalizadas do Docker.
 
@@ -8,7 +8,7 @@ Por padrão, quando você cria um container no Docker sem especificar uma rede p
 O Docker possui diversos tipos de redes, cada um com um propósito e casos de uso diferentes
 
 ### Bridge
-É a rede padrão dos containers quando nenhuma network é especificada. É criado uma rede isolada para os containers, permitindo que enxerguem outros containers na mesma rede somente através de seu IP, para serem acessados fora da Bridge, o mapeamento de portas é necessário.
+É a rede padrão dos containers quando nenhuma network é especificada. É criado uma rede isolada para os containers, permitindo que enxerguem outros containers na mesma rede somente através de seu IP, para serem acessados fora da Bridge, o mapeamento de portas é necessário. (Você pode criar sua própria network do tipo Bridge).
 
 ### None
 Esse tipo de rede isola os containers de seu host e de todos os seus componentes (outros containers existentes), desativando qualquer conectividade de rede do container inserido nessa network.
